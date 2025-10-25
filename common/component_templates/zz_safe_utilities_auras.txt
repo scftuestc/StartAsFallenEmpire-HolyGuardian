@@ -1,0 +1,296 @@
+# ##################################################
+#
+# Radial Effect / Aura components
+#
+# ##################################################
+
+### Variables
+# 光环半径扩大至120
+@shipAuraRange = 120
+
+## 空槽
+utility_component_template = {
+    key = "FE_TITAN_AURA_EMPTY"
+    size = small
+    icon = "GFX_ship_part_empty_ftl_drive"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    ai_weight = { weight = 1 }
+}
+
+# #################
+# Reworked Auras
+# #################
+## 减益（对敌方）光环
+utility_component_template = {
+    key = "FE_TITAN_AURA_SHIELD_DAMPENER"
+    size = medium
+    icon = "GFX_ship_part_aura_shield_dampener"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    hostile_aura = {
+        name = "aura_shield_dampener"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = hostile_shield_dampener
+            priority = 1
+        }
+
+        modifier = {
+            ship_shield_mult = -0.40
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+utility_component_template = {
+    key = "FE_TITAN_AURA_QUANTUM_DESTABILIZER"
+    size = medium
+    icon = "GFX_ship_part_aura_quantum_destabilizer"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    hostile_aura = {
+        name = "aura_quantum_destabilizer"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = hostile_quantum_destabilizer
+            priority = 10
+        }
+
+        modifier = {
+            ship_fire_rate_mult = -0.25
+        }
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+utility_component_template = {
+    key = "FE_TITAN_AURA_SUBSPACE_SNARE"
+    size = medium
+    icon = "GFX_ship_part_aura_snare"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    hostile_aura = {
+        name = "aura_ship_subspace_snare"
+        radius = @shipAuraRange
+        apply_on = fleets
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = hostile_snare_aura
+            priority = 1
+        }
+
+        modifier = {
+            ship_emergency_ftl_min_days_mult = 1.5
+            ship_disengage_chance_mult = -0.40
+        }
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+## 增益（对友方）光环
+utility_component_template = {
+    key = "FE_TITAN_AURA_INSPIRING_PRESENCE"
+    size = medium
+    icon = "GFX_ship_part_aura_inspiring_presence"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    friendly_aura = {
+        name = "aura_inspiring_presence"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = friendly_inspiring_presence
+            priority = 20
+        }
+
+        modifier = {
+            ship_fire_rate_mult = 0.20
+        }
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+utility_component_template = {
+    key = "FE_TITAN_AURA_TARGETING_GRID"
+    size = medium
+    icon = "GFX_ship_part_aura_targeting_grid"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    friendly_aura = {
+        name = "aura_targeting_grid"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = friendly_targeting_grid
+            priority = 20
+        }
+
+        modifier = {
+            ship_tracking_add = 25
+        }
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+utility_component_template = {
+    key = "FE_TITAN_AURA_NANOBOT_CLOUD"
+    size = medium
+    icon = "GFX_ship_part_aura_nanobot"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    friendly_aura = {
+        name = "aura_nanobot_cloud"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = friendly_nanobot_cloud
+            priority = 20
+        }
+
+        modifier = {
+            ship_hull_regen_add_perc = 0.15
+            ship_armor_regen_add_perc = 0.25
+        }
+    }
+
+    ai_weight = { weight = 10 }
+}
+
+utility_component_template = { #Archaeo Detection Scrambler
+    key = "FE_TITAN_AURA_DETECTION_SCRAMBLER"
+    size = medium
+    icon = "GFX_ship_part_aura_detection_scrambler"
+    icon_frame = 1
+    power = 0
+    component_set = "fe_titan_aura_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+    }
+    size_restriction = { massive_ship_fallen_empire }
+
+    resources = {
+        category = ship_components
+        cost = {
+            minor_artifacts = @minor_artifacts_cost_xl
+        }
+    }
+
+    friendly_aura = {
+        name = "aura_detection_scrambler"
+        radius = @shipAuraRange
+        apply_on = ships
+
+        stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
+            id = friendly_detection_scrambler
+            priority = 20
+        }
+
+        modifier = { #This Archaeo component doesn't get bonus effect from the AP
+            ship_evasion_add = 15
+        }
+    }
+
+    prerequisites = { "tech_archaeo_detection_scrambler" }
+
+    ai_weight = { weight = 10 }
+}

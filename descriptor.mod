@@ -7,4 +7,4 @@ tags={
 	"Gameplay"
 }
 name="Start As Fallen Empire Holy Guardian"
-supported_version="v4.1.5"
+supported_version="v4.1.6"

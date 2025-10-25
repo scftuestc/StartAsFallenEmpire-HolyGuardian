@@ -2,9 +2,17 @@
 # Scripted Triggers #
 #       Ships       #
 #####################
+### 用于民用舰船
+ship_is_fe_civilian = {
+    OR = {
+        is_ship_size = science
+        is_ship_size = constructor
+        is_ship_size = colonizer
+    }
+}
 
-# 堕落帝国三独有船类型+灾飞路线飞船
-ship_is_fallen_empire = {
+### 用于军用舰船（堕落帝国三独有船类型+灾飞路线飞船）
+ship_is_fe_military = {
     OR = {
         # 原版堕落舰船
         is_ship_size = small_ship_fallen_empire

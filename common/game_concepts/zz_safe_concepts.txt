@@ -6,3 +6,7 @@ concept_psionic = {
 concept_all_technology = {
     icon = "gfx/interface/icons/research_icon.dds"
 }
+
+concept_void_subsidy = {
+    icon = "gfx/interface/icons/empire_economy.dds"
+}

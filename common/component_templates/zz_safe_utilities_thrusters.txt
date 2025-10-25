@@ -44,6 +44,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_1"
     icon_frame = 1
     power = @cruiser_power_1
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.20
+        ship_evasion_add = 3
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -51,24 +67,14 @@ utility_component_template = {
         }
     }
 
-    modifier = {
-        ship_base_speed_mult = 0.20
-        ship_evasion_add = 3
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
     }
-
     prerequisites = { "tech_thrusters_1" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_thrusters = yes
-    }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_2"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -77,19 +83,6 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_2"
     icon_frame = 1
     power = @cruiser_power_2
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cruiser_cost2
-        }
-    }
-
-    modifier = {
-        ship_base_speed_mult = 0.45
-        ship_evasion_add = 5
-    }
-
-    prerequisites = { "tech_thrusters_2" }
     component_set = "fe_thruster_components"
 
     potential = {
@@ -99,9 +92,27 @@ utility_component_template = {
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.45
+        ship_evasion_add = 5
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cruiser_cost2
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_2" }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_3"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -110,30 +121,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_3"
     icon_frame = 1
     power = @cruiser_power_3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cruiser_cost3
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.65
-        ship_evasion_add = 7
-    }
-
-    prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.65
+        ship_evasion_add = 7
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cruiser_cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_3" }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_4"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -142,30 +160,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_4"
     icon_frame = 1
     power = @cruiser_power_4
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cruiser_cost4
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.9
-        ship_evasion_add = 9
-    }
-
-    prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_cruiser_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.9
+        ship_evasion_add = 9
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cruiser_cost4
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_4" }
     upgrades_to = "FE_SMALL_SHIP_THRUSTER_5"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -174,6 +199,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_5"
     icon_frame = 1
     power = @cruiser_power_5
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 1.5
+        ship_evasion_add = 15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -181,31 +222,18 @@ utility_component_template = {
             sr_dark_matter = 4
         }
     }
-    modifier = {
-        ship_base_speed_mult = 1.5
-        ship_evasion_add = 15
-    }
 
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
     prerequisites = { "tech_dark_matter_propulsion" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_thrusters = yes
-    }
 
     ai_weight = {
-        weight = 5
+        weight = 6
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }
@@ -213,13 +241,28 @@ utility_component_template = {
 #################
 # 战列巡洋舰推进器 #
 #################
-
 utility_component_template = {
     key = "FE_LARGE_SHIP_THRUSTER_1"
     size = small
     icon = "GFX_ship_part_thruster_1"
     icon_frame = 1
     power = @battleship_power_1
+    component_set = "fe_thruster_components"
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.25
+        ship_evasion_add = 3
+    }
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_thrusters = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -227,24 +270,14 @@ utility_component_template = {
         }
     }
 
-    modifier = {
-        ship_base_speed_mult = 0.25
-        ship_evasion_add = 3
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
     }
-
     prerequisites = { "tech_thrusters_1" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_thrusters = yes
-    }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_2"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -253,6 +286,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_2"
     icon_frame = 1
     power = @battleship_power_2
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.5
+        ship_evasion_add = 5
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -260,24 +309,14 @@ utility_component_template = {
         }
     }
 
-    modifier = {
-        ship_base_speed_mult = 0.5
-        ship_evasion_add = 5
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
     }
-
     prerequisites = { "tech_thrusters_2" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_thrusters = yes
-    }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_3"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -286,30 +325,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_3"
     icon_frame = 1
     power = @battleship_power_3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @battleship_cost3
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.65
-        ship_evasion_add = 7
-    }
-
-    prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_battleship_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.65
+        ship_evasion_add = 7
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @battleship_cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_3" }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_4"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -318,30 +364,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_4"
     icon_frame = 1
     power = @battleship_power_4
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @battleship_cost4
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.9
-        ship_evasion_add = 9
-    }
-
-    prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_battleship_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.9
+        ship_evasion_add = 9
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @battleship_cost4
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_4" }
     upgrades_to = "FE_LARGE_SHIP_THRUSTER_5"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -350,19 +403,6 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_5"
     icon_frame = 1
     power = @battleship_power_5
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @battleship_cost4
-            sr_dark_matter = 8
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 1.5
-        ship_evasion_add = 15
-    }
-
-    prerequisites = { "tech_dark_matter_propulsion" }
     component_set = "fe_thruster_components"
 
     potential = {
@@ -373,15 +413,30 @@ utility_component_template = {
         fe_ship_uses_battleship_thrusters = yes
     }
 
+    ship_modifier = {
+        ship_base_speed_mult = 1.5
+        ship_evasion_add = 15
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @battleship_cost4
+            sr_dark_matter = 8
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_dark_matter_propulsion" }
+
     ai_weight = {
-        weight = 5
+        weight = 6
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }
@@ -395,6 +450,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_1"
     icon_frame = 1
     power = @titan_power_1
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.25
+        ship_evasion_add = 3
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -402,24 +473,14 @@ utility_component_template = {
         }
     }
 
-    modifier = {
-        ship_base_speed_mult = 0.25
-        ship_evasion_add = 3
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
     }
-
     prerequisites = { "tech_thrusters_1" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_thrusters = yes
-    }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_2"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -428,6 +489,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_2"
     icon_frame = 1
     power = @titan_power_2
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.5
+        ship_evasion_add = 5
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -435,24 +512,14 @@ utility_component_template = {
         }
     }
 
-    modifier = {
-        ship_base_speed_mult = 0.5
-        ship_evasion_add = 5
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
     }
-
     prerequisites = { "tech_thrusters_2" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_thrusters = yes
-    }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_3"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -461,30 +528,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_3"
     icon_frame = 1
     power = @titan_power_3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @titan_cost3
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.65
-        ship_evasion_add = 7
-    }
-
-    prerequisites = { "tech_thrusters_3" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_titan_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.65
+        ship_evasion_add = 7
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @titan_cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_3" }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_4"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -493,30 +567,37 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_4"
     icon_frame = 1
     power = @titan_power_4
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @titan_cost4
-        }
-    }
-    modifier = {
-        ship_base_speed_mult = 0.9
-        ship_evasion_add = 9
-    }
-
-    prerequisites = { "tech_thrusters_4" }
     component_set = "fe_thruster_components"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_titan_thrusters = yes
     }
+
+    ship_modifier = {
+        ship_base_speed_mult = 0.9
+        ship_evasion_add = 9
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @titan_cost4
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_thrusters_4" }
     upgrades_to = "FE_TITAN_SHIP_THRUSTER_5"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -525,6 +606,22 @@ utility_component_template = {
     icon = "GFX_ship_part_thruster_5"
     icon_frame = 1
     power = @titan_power_5
+    component_set = "fe_thruster_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_thrusters = yes
+    }
+
+    ship_modifier = {
+        ship_base_speed_mult = 1.5
+        ship_evasion_add = 15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -532,31 +629,18 @@ utility_component_template = {
             sr_dark_matter = 16
         }
     }
-    modifier = {
-        ship_base_speed_mult = 1.5
-        ship_evasion_add = 15
-    }
 
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
     prerequisites = { "tech_dark_matter_propulsion" }
-    component_set = "fe_thruster_components"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_thrusters = yes
-    }
 
     ai_weight = {
-        weight = 5
+        weight = 6
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }

@@ -30,28 +30,27 @@ utility_component_template = {
     icon = "GFX_ship_part_sensor_1"
     icon_frame = 1
     power = @power1
+    sensor_range = @sensor1
+    hyperlane_range = @hyperlane1
+    component_set = "fe_sensor_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        OR = {
+            is_ship_class = shipclass_transport
+            ship_is_fe_military = yes
+            ship_is_fe_civilian = yes
+        }
+    }
+
     resources = {
         category = ship_components
         cost = {
             alloys = @cost1
-        }
-    }
-    sensor_range = @sensor1
-    hyperlane_range = @hyperlane1
-
-    component_set = "fe_sensor_components"
-    upgrades_to = "FE_SENSOR_2"
-
-    potential = {
-        is_eager_explorer_ship = no
-        OR = {
-            ship_uses_civilian_cloaks = yes
-            is_ship_class = shipclass_transport
-            ship_is_fallen_empire = yes
-        }
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
         }
     }
 
@@ -59,8 +58,9 @@ utility_component_template = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    upgrades_to = "FE_SENSOR_2"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -69,33 +69,31 @@ utility_component_template = {
     icon = "GFX_ship_part_sensor_2"
     icon_frame = 1
     power = @power2
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost2
-        }
-    }
     sensor_range = @sensor2
     hyperlane_range = @hyperlane2
-
-    prerequisites = { "tech_sensors_2" }
     component_set = "fe_sensor_components"
-    upgrades_to = "FE_SENSOR_3"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        OR = {
+            is_ship_class = shipclass_transport
+            ship_is_fe_military = yes
+            ship_is_fe_civilian = yes
+        }
+    }
 
     ship_modifier = {
         ship_tracking_add = @hit2
     }
 
-    potential = {
-        is_eager_explorer_ship = no
-        OR = {
-            ship_uses_civilian_cloaks = yes
-            is_ship_class = shipclass_transport
-            ship_is_fallen_empire = yes
-        }
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost2
         }
     }
 
@@ -103,8 +101,10 @@ utility_component_template = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_sensors_2" }
+    upgrades_to = "FE_SENSOR_3"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -113,33 +113,31 @@ utility_component_template = {
     icon = "GFX_ship_part_sensor_3"
     icon_frame = 1
     power = @power3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost3
-        }
-    }
     sensor_range = @sensor3
     hyperlane_range = @hyperlane3
-
-    prerequisites = { "tech_sensors_3" }
     component_set = "fe_sensor_components"
-    upgrades_to = "SENSOR_4"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        OR = {
+            is_ship_class = shipclass_transport
+            ship_is_fe_military = yes
+            ship_is_fe_civilian = yes
+        }
+    }
 
     ship_modifier = {
         ship_tracking_add = @hit3
     }
 
-    potential = {
-        is_eager_explorer_ship = no
-        OR = {
-            ship_uses_civilian_cloaks = yes
-            is_ship_class = shipclass_transport
-            ship_is_fallen_empire = yes
-        }
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
         }
     }
 
@@ -147,8 +145,10 @@ utility_component_template = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_sensors_3" }
+    upgrades_to = "SENSOR_4"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -157,29 +157,31 @@ utility_component_template = {
     icon = "GFX_ship_part_sensor_4"
     icon_frame = 1
     power = @power4
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost4
-        }
-    }
     sensor_range = @sensor4
     hyperlane_range = @hyperlane4
+    component_set = "fe_sensor_components"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        OR = {
+            is_ship_class = shipclass_transport
+            ship_is_fe_military = yes
+            ship_is_fe_civilian = yes
+        }
+    }
 
     ship_modifier = {
         ship_tracking_add = @hit4
     }
 
-    potential = {
-        is_eager_explorer_ship = no
-        OR = {
-            ship_uses_civilian_cloaks = yes
-            is_ship_class = shipclass_transport
-            ship_is_fallen_empire = yes
-        }
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost4
         }
     }
 
@@ -187,9 +189,7 @@ utility_component_template = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
     prerequisites = { "tech_sensors_4" }
-    component_set = "fe_sensor_components"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }

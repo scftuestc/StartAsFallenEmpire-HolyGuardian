@@ -4,23 +4,26 @@
 
 ## Titan Lance
 weapon_component_template = {
-	key = "TITAN_LASER"
+	key = "FE_TITAN_LASER"
+	icon = "GFX_ship_part_energy_lance_2"
+	icon_frame = 1
 	size = titanic
 	type = instant
 	prio_projectile = yes
+	use_ship_main_target = no
+	component_set = "FE_TITAN_LASER"
+	projectile_gfx = "titan_laser"
 
 	potential = {
 		from = {
 			country_uses_bio_ships = no
 			is_fallen_empire = yes
+			has_origin = Start_As_Fallen_Empire_Holy_Guardians
 		}
 	}
+	size_restriction = { massive_ship_fallen_empire }
 
-	# 跟改为no
-	hidden = no
-
-	icon = "GFX_ship_part_energy_lance_2"
-	icon_frame = 1
+	tags = { weapon_type_energy weapon_role_artillery t_slot }
 
 	firing_arc = 25.0
 	damage = { min = 10000 max = 15000 }
@@ -34,12 +37,6 @@ weapon_component_template = {
 	windup = { min = 8 max = 22 }
 	range = 400
 
-	use_ship_main_target = no
-
-	tags = { weapon_type_energy weapon_role_artillery t_slot }
-
-	component_set = "TITAN_LASER"
-	projectile_gfx = "titan_laser"
 	resources = {
 		category = ship_components
 		cost = {
@@ -61,7 +58,7 @@ weapon_component_template = {
 	}
 
 	ai_weight = {
-		weight = 1
+		weight = 2
 		modifier = {
 			factor = 0.0
 			no_resource_for_component = { RESOURCE = rare_crystals }

@@ -8,9 +8,12 @@
 @power2 = -15
 @power3 = -25
 
-####################
-# DEFAULT COMPUTER #
-####################
+### 智能作战电脑及对应科技知性战斗模拟需要政策中的人工智能不为非法；自主舰船智能为机械物种专属，替代智能作战电脑。数值完全一致，因此只保留智慧作战电脑（SAPIENT）
+### 预知接口仅限选择了灵能飞升的帝国通过国家事件：预知接口获得对应科技，且无法被逆向工程，因此只有圣卫能用
+
+##############
+# 默认战术电脑 #
+##############
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_DEFAULT"
     size = small
@@ -18,15 +21,61 @@ utility_component_template = {
     icon_frame = 1
     ship_behavior = "default"
     upgrade_path = default
+    component_set = "fe_combat_computers"
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
-        OR = {
-            ship_is_fallen_empire = yes
-            is_ship_class = shipclass_military
-            is_ship_size = juggernaut
+        ship_is_fe_military = yes
+    }
+
+    ship_modifier = {
+        ship_tracking_add = 1
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+
+    ai_weight = { weight = 1 }
+}
+
+##############
+# 蜂拥战术电脑 #
+##############
+# 适用于：失落帝国护航舰，密语护航舰
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_SWARM_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "swarm"
+    upgrade_path = swarm
+    component_set = "combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_swarm_role = yes
+    }
+
+    ship_modifier = {
+        ship_evasion_mult = 0.05
+        ship_fire_rate_mult = 0.05
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
         }
     }
 
@@ -34,23 +83,36 @@ utility_component_template = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
+    prerequisites = { tech_administrative_ai }
+    upgrades_to = "FE_COMBAT_COMPUTER_SWARM_BASIC"
 
-    ai_weight = { weight = 0 }
+    ai_weight = { weight = 1 }
 }
 
-#####################
-# 'SWARM' COMPUTERS #
-#####################
-# 蜂拥战术电脑
-# 适用于：失落帝国护航舰，密语护航舰
-# 智能作战电脑及对应科技知性战斗模拟需要政策中的人工智能不为非法；自主舰船智能为机械智能专属，替代智能作战电脑。数值原版上来看完全一样，因此只保留智慧作战电脑（SAPIENT）
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_SWARM_BASIC"
     size = small
     icon = "GFX_ship_part_computer_swarm_basic"
     icon_frame = 1
     power = @power1
+    ship_behavior = "swarm"
+    upgrade_path = swarm
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_swarm_role = yes
+    }
+
+    ship_modifier = {
+        ship_evasion_mult = 0.15
+        ship_fire_rate_mult = 0.15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -58,32 +120,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_swarm_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
-    ship_behavior = "swarm"
-    upgrade_path = swarm
     prerequisites = { "tech_combat_computers_1" }
     upgrades_to = "FE_COMBAT_COMPUTER_SWARM_ADVANCED"
 
-    modifier = {
-        ship_evasion_mult = 0.15
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.15
-    }
-
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -92,6 +136,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_swarm_advanced"
     icon_frame = 1
     power = @power2
+    ship_behavior = "swarm"
+    upgrade_path = swarm
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_swarm_role = yes
+    }
+
+    ship_modifier = {
+        ship_evasion_mult = 0.30
+        ship_fire_rate_mult = 0.30
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -99,32 +161,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_swarm_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
-    ship_behavior = "swarm"
-    upgrade_path = swarm
     prerequisites = { "tech_combat_computers_2" }
     upgrades_to = "FE_COMBAT_COMPUTER_SWARM_SAPIENT"
 
-    modifier = {
-        ship_evasion_mult = 0.30
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.30
-    }
-
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -133,6 +177,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_swarm_sapient"
     icon_frame = 1
     power = @power3
+    ship_behavior = "swarm"
+    upgrade_path = swarm
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_swarm_role = yes
+    }
+
+    ship_modifier = {
+        ship_evasion_mult = 0.45
+        ship_fire_rate_mult = 0.45
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -140,32 +202,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_swarm_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
-    ship_behavior = "swarm"
-    upgrade_path = swarm
     prerequisites = { "tech_combat_computers_3" }
 
-    modifier = {
-        ship_evasion_mult = 0.45
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.45
-    }
-
     ai_weight = {
-        weight = 3
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -179,13 +223,31 @@ utility_component_template = {
         }
     }
 }
-# 预知接口仅限选择了灵能飞升的帝国通过国家事件：预知接口获得对应科技，且无法被逆向工程
+
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_SWARM_PRECOG"
     size = small
     icon = "GFX_ship_part_computer_swarm_precog"
     icon_frame = 1
     power = @power3
+    ship_behavior = "swarm"
+    upgrade_path = swarm
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_swarm_role = yes
+    }
+
+    ship_modifier = {
+        ship_evasion_mult = 0.60
+        ship_fire_rate_mult = 0.60
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -193,45 +255,84 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire_spiritualist = yes
-        }
-        fe_ship_uses_swarm_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire_spiritualist = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "swarm"
-    upgrade_path = swarm
     prerequisites = { "tech_precognition_interface" }
 
-    modifier = {
-        ship_evasion_mult = 0.60
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.60
-    }
-
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
-######################
-# 'PICKET' COMPUTERS #
-######################
-# 哨戒战术电脑
+##############
+# 哨戒战术电脑 #
+##############
 # 适用于：失落帝国护航舰，密语护航舰
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PICKET_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "picket"
+    upgrade_path = picket
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_picket_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.05
+        ship_tracking_add = 2
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { tech_administrative_ai }
+    upgrades_to = "FE_COMBAT_COMPUTER_PICKET_BASIC"
+
+    ai_weight = { weight = 1 }
+}
+
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_PICKET_BASIC"
     size = small
     icon = "GFX_ship_part_computer_picket_basic"
     icon_frame = 1
     power = @power1
+    ship_behavior = "picket"
+    upgrade_path = picket
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_picket_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.15
+        ship_tracking_add = 15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -239,31 +340,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_picket_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "picket"
-    upgrade_path = picket
     prerequisites = { "tech_combat_computers_1" }
     upgrades_to = "FE_COMBAT_COMPUTER_PICKET_ADVANCED"
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.15
-        ship_tracking_add = 15
-    }
-
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -272,39 +356,40 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_picket_advanced"
     icon_frame = 1
     power = @power2
+    ship_behavior = "picket"
+    upgrade_path = picket
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_picket_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.30
+        ship_tracking_add = 20
+        ship_evasion_mult = 0.15
+    }
+
     resources = {
         category = ship_components
         cost = {
             alloys = @cost2
         }
     }
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_picket_role = yes
-    }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
-    ship_behavior = "picket"
-    upgrade_path = picket
     prerequisites = { "tech_combat_computers_2" }
     upgrades_to = "FE_COMBAT_COMPUTER_PICKET_SAPIENT"
 
-    modifier = {
-        ship_evasion_mult = 0.15
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.30
-        ship_tracking_add = 20
-    }
-
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -313,6 +398,25 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_picket_sapient"
     icon_frame = 1
     power = @power3
+    ship_behavior = "picket"
+    upgrade_path = picket
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_picket_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.45
+        ship_tracking_add = 30
+        ship_evasion_mult = 0.30
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -320,34 +424,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_picket_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "picket"
-    upgrade_path = picket
     prerequisites = { "tech_combat_computers_3" }
 
-    modifier = {
-        ship_evasion_mult = 0.30
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.45
-        ship_tracking_add = 30
-    }
-
     ai_weight = {
-        weight = 3
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -368,6 +452,25 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_picket_precog"
     icon_frame = 1
     power = @power3
+    ship_behavior = "picket"
+    upgrade_path = picket
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_picket_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.60
+        ship_tracking_add = 40
+        ship_evasion_mult = 0.45
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -375,46 +478,84 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire_spiritualist = yes
-        }
-        fe_ship_uses_picket_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire_spiritualist = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "picket"
-    upgrade_path = picket
     prerequisites = { "tech_precognition_interface" }
 
-    modifier = {
-        ship_evasion_mult = 0.45
-    }
-    ship_modifier = {
-        ship_fire_rate_mult = 0.60
-        ship_tracking_add = 40
-    }
-
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
-####################
-# 'LINE' COMPUTERS #
-####################
-# 线列战术电脑
+##############
+# 线列战术电脑 #
+##############
 # 适用于：失落帝国护航舰、谜语护航舰、失落帝国战略巡洋舰、神秘战巡舰
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_LINE_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "line"
+    upgrade_path = line
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_line_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.05
+        ship_accuracy_add = 5
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { tech_administrative_ai }
+    upgrades_to = "FE_COMBAT_COMPUTER_LINE_BASIC"
+
+    ai_weight = { weight = 1 }
+}
+
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_LINE_BASIC"
     size = small
     icon = "GFX_ship_part_computer_line_basic"
     icon_frame = 1
     power = @power1
+    ship_behavior = "line"
+    upgrade_path = line
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_line_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.15
+        ship_accuracy_add = 10
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -422,31 +563,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_line_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "line"
-    upgrade_path = line
     prerequisites = { "tech_combat_computers_1" }
     upgrades_to = "FE_COMBAT_COMPUTER_LINE_ADVANCED"
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.15
-        ship_accuracy_add = 10
-    }
-
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -455,6 +579,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_line_advanced"
     icon_frame = 1
     power = @power2
+    ship_behavior = "line"
+    upgrade_path = line
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_line_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.30
+        ship_accuracy_add = 15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -462,30 +604,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_line_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_combat_computers"
-    ship_behavior = "line"
-    upgrade_path = line
     prerequisites = { "tech_combat_computers_2" }
     upgrades_to = "FE_COMBAT_COMPUTER_LINE_SAPIENT"
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.30
-        ship_accuracy_add = 15
-    }
-
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -494,6 +620,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_line_sapient"
     icon_frame = 1
     power = @power3
+    ship_behavior = "line"
+    upgrade_path = line
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_line_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.45
+        ship_accuracy_add = 20
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -501,31 +645,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_line_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "line"
-    upgrade_path = line
     prerequisites = { "tech_combat_computers_3" }
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.45
-        ship_accuracy_add = 20
-    }
-
     ai_weight = {
-        weight = 3
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -546,30 +673,18 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_line_precog"
     icon_frame = 1
     power = @power3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost3
-        }
-    }
+    ship_behavior = "line"
+    upgrade_path = line
+    component_set = "fe_combat_computers"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_line_role = yes
     }
-
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire_spiritualist = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "line"
-    upgrade_path = line
-    prerequisites = { "tech_precognition_interface" }
 
     ship_modifier = {
         ship_fire_rate_mult = 0.60
@@ -577,20 +692,91 @@ utility_component_template = {
         ship_tracking_add = 20
     }
 
-    ai_weight = { weight = 4 }
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire_spiritualist = yes
+    }
+    prerequisites = { "tech_precognition_interface" }
+
+    ai_weight = { weight = 5 }
 }
 
-######################
-# 'ARTILLERY' COMPUTERS #
-######################
-# 炮击作战电脑
+##############
+# 炮击战术电脑 #
+##############
 # 适用于：失落帝国护航舰、谜语护航舰、失落帝国战略巡洋舰、神秘战巡舰
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_ARTILLERY_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "artillery"
+    upgrade_path = artillery
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_artillery_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.05
+        ship_weapon_range_mult = 0.05
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { tech_administrative_ai }
+    upgrades_to = "FE_COMBAT_COMPUTER_ARTILLERY_BASIC"
+
+    ai_weight = { weight = 1 }
+}
+
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_ARTILLERY_BASIC"
     size = small
     icon = "GFX_ship_part_computer_artillery_basic"
     icon_frame = 1
     power = @power1
+    ship_behavior = "artillery"
+    upgrade_path = artillery
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_artillery_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.15
+        ship_weapon_range_mult = 0.15
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -598,31 +784,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_artillery_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "artillery"
-    upgrade_path = artillery
     prerequisites = { "tech_combat_computers_1" }
     upgrades_to = "FE_COMBAT_COMPUTER_ARTILLERY_ADVANCED"
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.15
-        ship_weapon_range_mult = 0.15
-    }
-
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -631,6 +800,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_artillery_advanced"
     icon_frame = 1
     power = @power2
+    ship_behavior = "artillery"
+    upgrade_path = artillery
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_artillery_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.3
+        ship_weapon_range_mult = 0.3
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -638,31 +825,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_artillery_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "artillery"
-    upgrade_path = artillery
     prerequisites = { "tech_combat_computers_2" }
     upgrades_to = "FE_COMBAT_COMPUTER_ARTILLERY_SAPIENT"
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.3
-        ship_weapon_range_mult = 0.3
-    }
-
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -671,6 +841,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_artillery_sapient"
     icon_frame = 1
     power = @power3
+    ship_behavior = "artillery"
+    upgrade_path = artillery
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_artillery_role = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.45
+        ship_weapon_range_mult = 0.45
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -678,31 +866,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_artillery_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "artillery"
-    upgrade_path = artillery
     prerequisites = { "tech_combat_computers_3" }
 
-    ship_modifier = {
-        ship_fire_rate_mult = 0.45
-        ship_weapon_range_mult = 0.45
-    }
-
     ai_weight = {
-        weight = 3
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -723,30 +894,18 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_artillery_precog"
     icon_frame = 1
     power = @power3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost3
-        }
-    }
+    ship_behavior = "artillery"
+    upgrade_path = artillery
+    component_set = "fe_combat_computers"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_artillery_role = yes
     }
-
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire_spiritualist = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "artillery"
-    upgrade_path = artillery
-    prerequisites = { "tech_precognition_interface" }
 
     ship_modifier = {
         ship_fire_rate_mult = 0.6
@@ -754,33 +913,87 @@ utility_component_template = {
         ship_tracking_add = 20
     }
 
-    ai_weight = { weight = 4 }
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire_spiritualist = yes
+    }
+    prerequisites = { "tech_precognition_interface" }
+
+    ai_weight = { weight = 5 }
 }
 
-######################
-# 'CARRIER' COMPUTERS #
-######################
-# 航母战术电脑
+##############
+# 航母战术电脑 #
+##############
 # 适用于：失落帝国战略巡洋舰、神秘战巡舰、失落帝国泰坦、悖论泰坦舰
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_CARRIER_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "carrier"
+    upgrade_path = carrier
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        ship_uses_carrier_role = yes
+    }
+
+    ship_modifier = {
+        ship_engagement_range_mult = 0.05
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { tech_administrative_ai }
+    upgrades_to = "FE_COMBAT_COMPUTER_CARRIER_BASIC"
+
+    ai_weight = { weight = 1 }
+}
+
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_CARRIER_BASIC"
     size = small
     icon = "GFX_ship_part_computer_carrier_basic"
     icon_frame = 1
     power = @power1
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost1
-        }
-    }
+    ship_behavior = "carrier"
+    upgrade_path = carrier
+    component_set = "fe_combat_computers"
 
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_carrier_role = yes
+    }
+
+    ship_modifier = {
+        ship_engagement_range_mult = 0.25
     }
 
     show_tech_unlock_if = {
@@ -788,18 +1001,16 @@ utility_component_template = {
         is_fallen_empire = yes
     }
 
-    component_set = "fe_combat_computers"
-    ship_behavior = "carrier"
-    upgrade_path = carrier
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost1
+        }
+    }
     prerequisites = { "tech_combat_computers_1" }
     upgrades_to = "FE_COMBAT_COMPUTER_CARRIER_ADVANCED"
 
-
-    ship_modifier = {
-        ship_engagement_range_mult = 0.25
-    }
-
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -808,6 +1019,23 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_carrier_advanced"
     icon_frame = 1
     power = @power2
+    ship_behavior = "carrier"
+    upgrade_path = carrier
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_carrier_role = yes
+    }
+
+    ship_modifier = {
+        ship_engagement_range_mult = 0.50
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -815,30 +1043,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_carrier_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "carrier"
-    upgrade_path = carrier
     prerequisites = { "tech_combat_computers_2" }
     upgrades_to = "FE_COMBAT_COMPUTER_CARRIER_SAPIENT"
 
-    ship_modifier = {
-        ship_engagement_range_mult = 0.50
-    }
-
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -847,6 +1059,23 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_carrier_sapient"
     icon_frame = 1
     power = @power3
+    ship_behavior = "carrier"
+    upgrade_path = carrier
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_carrier_role = yes
+    }
+
+    ship_modifier = {
+        ship_engagement_range_mult = 1.0
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -854,30 +1083,14 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_carrier_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "carrier"
-    upgrade_path = carrier
     prerequisites = { "tech_combat_computers_3" }
 
-    ship_modifier = {
-        ship_engagement_range_mult = 1.0
-    }
-
     ai_weight = {
-        weight = 3
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -898,6 +1111,24 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_carrier_precog"
     icon_frame = 1
     power = @power3
+    ship_behavior = "carrier"
+    upgrade_path = carrier
+    component_set = "fe_combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_carrier_role = yes
+    }
+
+    ship_modifier = {
+        ship_engagement_range_mult = 1.5
+        ship_tracking_add = 20
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -905,35 +1136,57 @@ utility_component_template = {
         }
     }
 
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire_spiritualist = yes
-        }
-        fe_ship_uses_carrier_role = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire_spiritualist = yes
     }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "carrier"
-    upgrade_path = carrier
     prerequisites = { "tech_precognition_interface" }
 
-    ship_modifier = {
-        ship_engagement_range_mult = 1.5
-        ship_tracking_add = 20
-    }
-
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 ##############
 # 平台作战电脑 #
 ##############
+# 适用于：哨站、堡垒
+utility_component_template = {
+    key = "FE_COMBAT_COMPUTER_PLATFORM_DEFAULT"
+    size = small
+    icon = "GFX_ship_part_computer_default"
+    icon_frame = 1
+    power = @power0
+    ship_behavior = "platform"
+    component_set = "combat_computers"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        ship_uses_platform_computers = yes
+    }
+
+    ship_modifier = {
+        ship_fire_rate_mult = 0.05
+        ship_tracking_add = 5
+    }
+
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost0
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_BASIC"
+
+    ai_weight = { weight = 1 }
+}
 
 utility_component_template = {
     key = "FE_COMBAT_COMPUTER_PLATFORM_BASIC"
@@ -941,38 +1194,38 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_platform_basic"
     icon_frame = 1
     power = @power1
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost1
-        }
-    }
+    ship_behavior = "platform"
+    component_set = "fe_combat_computers"
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_platform_computers = yes
     }
-
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "platform"
-    prerequisites = { "tech_combat_computers_1" }
-    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_ADVANCED"
 
     ship_modifier = {
         ship_fire_rate_mult = 0.40
         ship_tracking_add = 20
     }
 
-    ai_weight = {
-        weight = 2
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost1
+        }
     }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_combat_computers_1" }
+    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_ADVANCED"
+
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -981,12 +1234,9 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_platform_advanced"
     icon_frame = 1
     power = @power2
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost2
-        }
-    }
+    ship_behavior = "platform"
+    component_set = "fe_combat_computers"
+
     potential = {
         from = {
             country_uses_bio_ships = no
@@ -995,24 +1245,26 @@ utility_component_template = {
         fe_ship_uses_platform_computers = yes
     }
 
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "platform"
-    prerequisites = { "tech_combat_computers_2" }
-    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_SAPIENT"
-
     ship_modifier = {
         ship_fire_rate_mult = 0.50
         ship_tracking_add = 25
     }
 
-    ai_weight = {
-        weight = 3
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost2
+        }
     }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_combat_computers_2" }
+    upgrades_to = "FE_COMBAT_COMPUTER_PLATFORM_SAPIENT"
+
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -1021,28 +1273,17 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_platform_sapient"
     icon_frame = 1
     power = @power3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost3
-        }
-    }
+    ship_behavior = "platform"
+    component_set = "fe_combat_computers"
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_platform_computers = yes
     }
-
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "platform"
-    prerequisites = { "tech_combat_computers_3" }
 
     ship_modifier = {
         ship_fire_rate_mult = 0.60
@@ -1050,8 +1291,21 @@ utility_component_template = {
         ship_accuracy_add = 15
     }
 
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
+    }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire = yes
+    }
+    prerequisites = { "tech_combat_computers_3" }
+
     ai_weight = {
-        weight = 5
+        weight = 4
         modifier = {
             factor = 0
             OR = {
@@ -1072,28 +1326,17 @@ utility_component_template = {
     icon = "GFX_ship_part_computer_platform_precog"
     icon_frame = 1
     power = @power3
-    resources = {
-        category = ship_components
-        cost = {
-            alloys = @cost3
-        }
-    }
+    ship_behavior = "platform"
+    component_set = "fe_combat_computers"
+
     potential = {
         from = {
             country_uses_bio_ships = no
             is_fallen_empire_spiritualist = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
         }
         fe_ship_uses_platform_computers = yes
     }
-
-    show_tech_unlock_if = {
-        country_uses_bio_ships = no
-        is_fallen_empire_spiritualist = yes
-    }
-
-    component_set = "fe_combat_computers"
-    ship_behavior = "platform"
-    prerequisites = { "tech_precognition_interface" }
 
     ship_modifier = {
         ship_fire_rate_mult = 0.70
@@ -1101,7 +1344,18 @@ utility_component_template = {
         ship_accuracy_add = 20
     }
 
-    ai_weight = {
-        weight = 4
+    resources = {
+        category = ship_components
+        cost = {
+            alloys = @cost3
+        }
     }
+
+    show_tech_unlock_if = {
+        country_uses_bio_ships = no
+        is_fallen_empire_spiritualist = yes
+    }
+    prerequisites = { "tech_precognition_interface" }
+
+    ai_weight = { weight = 5 }
 }

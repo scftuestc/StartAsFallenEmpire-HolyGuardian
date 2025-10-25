@@ -3,62 +3,67 @@
 ############################
 # POWER / COST OF REACTORS #
 ############################
-# 能源为原版的2倍，花费不变
-@cruiser_reactor_power_1 = 560
-@cruiser_reactor_power_2 = 720
-@cruiser_reactor_power_3 = 960
-@cruiser_reactor_power_4 = 1240
-@cruiser_reactor_power_5 = 1600
-@cruiser_reactor_power_6 = 2060
+## 能源产出为原版的2.5倍，花费成本为1.5倍，维护费不变
 
-@cruiser_reactor_cost_1 = 40
-@cruiser_reactor_cost_2 = 52
-@cruiser_reactor_cost_3 = 68
-@cruiser_reactor_cost_4 = 88
-@cruiser_reactor_cost_5 = 112
-@cruiser_reactor_cost_6 = 148
+# 护航舰
+@cruiser_reactor_power_1 = 700
+@cruiser_reactor_power_2 = 900
+@cruiser_reactor_power_3 = 1200
+@cruiser_reactor_power_4 = 1550
+@cruiser_reactor_power_5 = 2000
+@cruiser_reactor_power_6 = 2575
 
-@battleship_reactor_power_1 = 1100
-@battleship_reactor_power_2 = 1440
-@battleship_reactor_power_3 = 1900
-@battleship_reactor_power_4 = 2500
-@battleship_reactor_power_5 = 3100
-@battleship_reactor_power_6 = 4000
+@cruiser_reactor_cost_1 = 60
+@cruiser_reactor_cost_2 = 78
+@cruiser_reactor_cost_3 = 102
+@cruiser_reactor_cost_4 = 132
+@cruiser_reactor_cost_5 = 168
+@cruiser_reactor_cost_6 = 222
 
-@battleship_reactor_cost_1 = 80
-@battleship_reactor_cost_2 = 104
-@battleship_reactor_cost_3 = 136
-@battleship_reactor_cost_4 = 176
-@battleship_reactor_cost_5 = 224
-@battleship_reactor_cost_6 = 296
+# 战列巡洋舰
+@battleship_reactor_power_1 = 1375
+@battleship_reactor_power_2 = 1800
+@battleship_reactor_power_3 = 2375
+@battleship_reactor_power_4 = 3125
+@battleship_reactor_power_5 = 3875
+@battleship_reactor_power_6 = 5000
 
-@titan_reactor_power_1 = 2200
-@titan_reactor_power_2 = 2900
-@titan_reactor_power_3 = 3800
-@titan_reactor_power_4 = 5000
-@titan_reactor_power_5 = 6400
-@titan_reactor_power_6 = 8400
+@battleship_reactor_cost_1 = 120
+@battleship_reactor_cost_2 = 156
+@battleship_reactor_cost_3 = 204
+@battleship_reactor_cost_4 = 264
+@battleship_reactor_cost_5 = 336
+@battleship_reactor_cost_6 = 444
 
-@titan_reactor_cost_1 = 160
-@titan_reactor_cost_2 = 208
-@titan_reactor_cost_3 = 272
-@titan_reactor_cost_4 = 352
-@titan_reactor_cost_5 = 448
-@titan_reactor_cost_6 = 592
+# 泰坦
+@titan_reactor_power_1 = 2750
+@titan_reactor_power_2 = 3625
+@titan_reactor_power_3 = 4750
+@titan_reactor_power_4 = 6250
+@titan_reactor_power_5 = 8000
+@titan_reactor_power_6 = 10500
 
-@platform_reactor_power_1 = 400
-@platform_reactor_power_2 = 520
-@platform_reactor_power_3 = 680
-@platform_reactor_power_4 = 880
-@platform_reactor_power_5 = 1150
-@platform_reactor_power_6 = 1500
+@titan_reactor_cost_1 = 240
+@titan_reactor_cost_2 = 312
+@titan_reactor_cost_3 = 408
+@titan_reactor_cost_4 = 528
+@titan_reactor_cost_5 = 672
+@titan_reactor_cost_6 = 888
 
-@platform_reactor_cost_1 = 20
-@platform_reactor_cost_2 = 26
-@platform_reactor_cost_3 = 34
-@platform_reactor_cost_4 = 44
-@platform_reactor_cost_5 = 56
-@platform_reactor_cost_6 = 74
+# 哨站与堡垒
+@platform_reactor_power_1 = 500
+@platform_reactor_power_2 = 650
+@platform_reactor_power_3 = 850
+@platform_reactor_power_4 = 1100
+@platform_reactor_power_5 = 1435
+@platform_reactor_power_6 = 1875
+
+@platform_reactor_cost_1 = 30
+@platform_reactor_cost_2 = 39
+@platform_reactor_cost_3 = 51
+@platform_reactor_cost_4 = 66
+@platform_reactor_cost_5 = 84
+@platform_reactor_cost_6 = 111
 
 ##############
 # 护航舰反应堆 #
@@ -69,6 +74,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_1"
     icon_frame = 1
     power = @cruiser_reactor_power_1
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @cruiser_reactor_cost_1 }
@@ -77,24 +93,15 @@ utility_component_template = {
             alloys = 0.04
         }
     }
-    prerequisites = { "tech_fission_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_fission_power" }
     upgrades_to = "FE_SMALLSHIP_FUSION_REACTOR"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -103,6 +110,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_2"
     icon_frame = 1
     power = @cruiser_reactor_power_2
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @cruiser_reactor_cost_2 }
@@ -111,24 +129,15 @@ utility_component_template = {
             alloys = 0.052
         }
     }
-    prerequisites = { "tech_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
 
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
     upgrades_to = "FE_SMALLSHIP_COLD_FUSION_REACTOR"
+    prerequisites = { "tech_fusion_power" }
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -137,6 +146,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_3"
     icon_frame = 1
     power = @cruiser_reactor_power_3
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @cruiser_reactor_cost_3 }
@@ -146,24 +166,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_cold_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_cold_fusion_power" }
     upgrades_to = "FE_SMALLSHIP_ANTIMATTER_REACTOR"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -172,6 +182,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_4"
     icon_frame = 1
     power = @cruiser_reactor_power_4
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @cruiser_reactor_cost_4 }
@@ -181,24 +202,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_antimatter_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_antimatter_power" }
     upgrades_to = "FE_SMALLSHIP_ZERO_POINT_REACTOR"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -207,6 +218,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_5"
     icon_frame = 1
     power = @cruiser_reactor_power_5
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @cruiser_reactor_cost_5 }
@@ -216,24 +238,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_zero_point_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_zero_point_power" }
     upgrades_to = "FE_SMALLSHIP_DARK_MATTER_REACTOR"
 
-    ai_weight = { weight = 5 }
+    ai_weight = { weight = 6 }
 }
 
 utility_component_template = {
@@ -242,11 +254,22 @@ utility_component_template = {
     icon = "GFX_ship_part_dark_matter_power_core"
     icon_frame = 1
     power = @cruiser_reactor_power_6
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_cruiser_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
             alloys = @cruiser_reactor_cost_6
-            sr_dark_matter = 4
+            sr_dark_matter = 6
         }
         upkeep = {
             energy = 1.48
@@ -254,31 +277,17 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_dark_matter_power_core" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_cruiser_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_dark_matter_power_core" }
 
     ai_weight = {
-        weight = 6
+        weight = 7
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }
@@ -292,6 +301,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_1"
     icon_frame = 1
     power = @battleship_reactor_power_1
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @battleship_reactor_cost_1 }
@@ -301,24 +321,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fission_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_fission_power" }
     upgrades_to = "FE_LARGESHIP_FUSION_REACTOR"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -327,6 +337,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_2"
     icon_frame = 1
     power = @battleship_reactor_power_2
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @battleship_reactor_cost_2 }
@@ -336,24 +357,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_fusion_power" }
     upgrades_to = "FE_LARGESHIP_COLD_FUSION_REACTOR"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -362,6 +373,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_3"
     icon_frame = 1
     power = @battleship_reactor_power_3
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @battleship_reactor_cost_3 }
@@ -371,24 +393,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_cold_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_cold_fusion_power" }
     upgrades_to = "FE_LARGESHIP_ANTIMATTER_REACTOR"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -397,6 +409,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_4"
     icon_frame = 1
     power = @battleship_reactor_power_4
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @battleship_reactor_cost_4 }
@@ -406,24 +429,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_antimatter_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_antimatter_power" }
     upgrades_to = "FE_LARGESHIP_ZERO_POINT_REACTOR"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -432,6 +445,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_5"
     icon_frame = 1
     power = @battleship_reactor_power_5
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @battleship_reactor_cost_5 }
@@ -441,24 +465,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_zero_point_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_zero_point_power" }
     upgrades_to = "FE_LARGESHIP_DARK_MATTER_REACTOR"
 
-    ai_weight = { weight = 5 }
+    ai_weight = { weight = 6 }
 }
 
 utility_component_template = {
@@ -467,6 +481,17 @@ utility_component_template = {
     icon = "GFX_ship_part_dark_matter_power_core"
     icon_frame = 1
     power = @battleship_reactor_power_6
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_battleship_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -479,31 +504,17 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_dark_matter_power_core" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_battleship_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_dark_matter_power_core" }
 
     ai_weight = {
-        weight = 6
+        weight = 7
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }
@@ -517,6 +528,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_1"
     icon_frame = 1
     power = @titan_reactor_power_1
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @titan_reactor_cost_1 }
@@ -526,24 +548,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fission_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_fission_power" }
     upgrades_to = "FE_TITAN_FUSION_REACTOR"
 
-    ai_weight = { weight = 1 }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -552,6 +564,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_2"
     icon_frame = 1
     power = @titan_reactor_power_2
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @titan_reactor_cost_2 }
@@ -561,24 +584,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_fusion_power" }
     upgrades_to = "FE_TITAN_COLD_FUSION_REACTOR"
 
-    ai_weight = { weight = 2 }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -587,6 +600,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_3"
     icon_frame = 1
     power = @titan_reactor_power_3
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @titan_reactor_cost_3 }
@@ -596,24 +620,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_cold_fusion_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_cold_fusion_power" }
     upgrades_to = "FE_TITAN_ANTIMATTER_REACTOR"
 
-    ai_weight = { weight = 3 }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -622,6 +636,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_4"
     icon_frame = 1
     power = @titan_reactor_power_4
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @titan_reactor_cost_4 }
@@ -631,24 +656,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_antimatter_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_antimatter_power" }
     upgrades_to = "FE_TITAN_ZERO_POINT_REACTOR"
 
-    ai_weight = { weight = 4 }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -657,6 +672,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_5"
     icon_frame = 1
     power = @titan_reactor_power_5
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = { alloys = @titan_reactor_cost_5 }
@@ -666,24 +692,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_zero_point_power" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_zero_point_power" }
     upgrades_to = "FE_TITAN_DARK_MATTER_REACTOR"
 
-    ai_weight = { weight = 5 }
+    ai_weight = { weight = 6 }
 }
 
 utility_component_template = {
@@ -692,6 +708,17 @@ utility_component_template = {
     icon = "GFX_ship_part_dark_matter_power_core"
     icon_frame = 1
     power = @titan_reactor_power_6
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_titan_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -704,44 +731,41 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_dark_matter_power_core" }
-    component_set = "fe_power_core"
-
-    potential = {
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-        fe_ship_uses_titan_reactors = yes
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_dark_matter_power_core" }
 
     ai_weight = {
-        weight = 6
+        weight = 7
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
         }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
-        }
     }
 }
 
-########################
-# 防御平台/离子加农炮反应堆 #
-########################
+################
+# 哨站/堡垒反应堆 #
+################
 utility_component_template = {
     key = "FE_PLATFORM_FISSION_REACTOR"
     size = large
     icon = "GFX_ship_part_reactor_1"
     icon_frame = 1
     power = @platform_reactor_power_1
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -753,25 +777,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fission_power" }
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_power_core"
+    prerequisites = { "tech_fission_power" }
     upgrades_to = "FE_PLATFORM_FUSION_REACTOR"
 
-    ai_weight = {
-        weight = 1
-    }
+    ai_weight = { weight = 2 }
 }
 
 utility_component_template = {
@@ -780,6 +793,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_2"
     icon_frame = 1
     power = @platform_reactor_power_2
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -791,27 +815,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_fusion_power" }
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
-    component_set = "fe_power_core"
+    prerequisites = { "tech_fusion_power" }
     upgrades_to = "FE_PLATFORM_COLD_FUSION_REACTOR"
 
-
-
-    ai_weight = {
-        weight = 2
-    }
+    ai_weight = { weight = 3 }
 }
 
 utility_component_template = {
@@ -820,6 +831,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_3"
     icon_frame = 1
     power = @platform_reactor_power_3
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -831,25 +853,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_cold_fusion_power" }
-    component_set = "fe_power_core"
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_cold_fusion_power" }
     upgrades_to = "FE_PLATFORM_ANTIMATTER_REACTOR"
 
-    ai_weight = {
-        weight = 3
-    }
+    ai_weight = { weight = 4 }
 }
 
 utility_component_template = {
@@ -858,6 +869,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_4"
     icon_frame = 1
     power = @platform_reactor_power_4
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -869,25 +891,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_antimatter_power" }
-    component_set = "fe_power_core"
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_antimatter_power" }
     upgrades_to = "FE_PLATFORM_ZERO_POINT_REACTOR"
 
-    ai_weight = {
-        weight = 4
-    }
+    ai_weight = { weight = 5 }
 }
 
 utility_component_template = {
@@ -896,6 +907,17 @@ utility_component_template = {
     icon = "GFX_ship_part_reactor_5"
     icon_frame = 1
     power = @platform_reactor_power_5
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -907,25 +929,14 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_zero_point_power" }
-    component_set = "power_core"
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_zero_point_power" }
     upgrades_to = "FE_PLATFORM_DARK_MATTER_REACTOR"
 
-    ai_weight = {
-        weight = 5
-    }
+    ai_weight = { weight = 6 }
 }
 
 utility_component_template = {
@@ -934,6 +945,17 @@ utility_component_template = {
     icon = "GFX_ship_part_dark_matter_power_core"
     icon_frame = 1
     power = @platform_reactor_power_6
+    component_set = "fe_power_core"
+
+    potential = {
+        from = {
+            country_uses_bio_ships = no
+            is_fallen_empire = yes
+            has_origin = Start_As_Fallen_Empire_Holy_Guardians
+        }
+        fe_ship_uses_platform_reactors = yes
+    }
+
     resources = {
         category = ship_components
         cost = {
@@ -946,30 +968,17 @@ utility_component_template = {
         }
     }
 
-    prerequisites = { "tech_dark_matter_power_core" }
-    component_set = "fe_power_core"
-    potential = {
-        fe_ship_uses_platform_reactors = yes
-        from = {
-            country_uses_bio_ships = no
-            is_fallen_empire = yes
-        }
-    }
-
     show_tech_unlock_if = {
         country_uses_bio_ships = no
         is_fallen_empire = yes
     }
+    prerequisites = { "tech_dark_matter_power_core" }
 
     ai_weight = {
-        weight = 6
+        weight = 7
         modifier = {
             factor = 0.0
             no_resource_for_component = { RESOURCE = sr_dark_matter }
-        }
-        modifier = {
-            factor = 0.0
-            is_ai = yes
         }
     }
 }

@@ -1,4 +1,4 @@
-# 跃迁引擎
+## 跃迁引擎
 component_set = {
     key = "fe_ftl_components"
 
@@ -7,7 +7,7 @@ component_set = {
     icon = "GFX_ship_part_hyperdrive"
     icon_frame = 1
 }
-# 探测器
+## 探测器
 component_set = {
     key = "fe_sensor_components"
 
@@ -16,7 +16,7 @@ component_set = {
     icon = "GFX_ship_part_sensor_4"
     icon_frame = 1
 }
-# 推进器
+## 推进器
 component_set = {
     key = "fe_thruster_components"
 
@@ -25,7 +25,7 @@ component_set = {
     icon = "GFX_ship_part_thruster_1"
     icon_frame = 1
 }
-# 反应堆
+## 反应堆
 component_set = {
     key = "fe_power_core"
 
@@ -34,7 +34,7 @@ component_set = {
     icon = "GFX_ship_part_dark_matter_power_core"
     icon_frame = 1
 }
-# 作战电脑
+## 作战电脑
 component_set = {
     key = "fe_combat_computers"
 
@@ -42,5 +42,14 @@ component_set = {
     is_core_component_set = yes
     affects_target_type = yes
     icon = "GFX_ship_part_computer"
+    icon_frame = 1
+}
+## 泰坦光环
+component_set = {
+    key = "fe_titan_aura_components"
+
+    required_component_set = yes
+    is_core_component_set = yes
+    icon = "GFX_ship_part_sensor"
     icon_frame = 1
 }
